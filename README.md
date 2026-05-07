@@ -9,11 +9,6 @@
   </ul>
 </div>
 
-Version 1.5.0
-
->[!warning] NB
-> work in progress
-
 ### Installation
 
 ```
