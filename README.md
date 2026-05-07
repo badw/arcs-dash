@@ -4,7 +4,7 @@
 
   <ul style="list-style: none">
     <summary>
-      <h2> <pre>ARCS-DASH - Dash Interface for Automated Reactions for CO<sub>2</sub> Storage</pre> </h2>
+      <h2> <pre>ARCS-DASH - Dash Interface for github.com/badw/arcs.git
     </summary>
   </ul>
 </div>
@@ -23,7 +23,9 @@ pip install .
 ```
 ### ARCS App 
 
-The app is created using the `plotly DASH` ([https://github.com/plotly/dash](https://github.com/plotly/dash)) framework.  
+The app is created using the `plotly DASH` ([https://github.com/plotly/dash](https://github.com/plotly/dash)) framework.
+
+The app utilises "Automated Reactions for CO2 Storage, ARCS" [https://github.com/badw/arcs.git](https://github.com/badw/arcs.git) 
 
 
 ### Executing `arcs-dash`
