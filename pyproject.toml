@@ -46,7 +46,7 @@ dependencies = [
         'pywebview',
         'setproctitle',
         'pytest',
-        'arcs @ git+https://github.com/badw/arcs.git@devel'
+        'arcs @ git+https://github.com/badw/arcs.git'
 ]
 
 [project.optional-dependencies]
