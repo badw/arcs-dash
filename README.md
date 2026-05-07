@@ -13,7 +13,7 @@
 
 ```
 git clone https://github.com/badw/arcs-dash.git
-cd arcs
+cd arcs-dash
 pip install . 
 ```
 ### ARCS App 
