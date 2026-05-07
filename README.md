@@ -31,8 +31,6 @@ arcsdashapp
 ```
 
 
-```
-
 <p align="center">
  <img src="./static/ARCS-gui.png" height="300">
 </p>
