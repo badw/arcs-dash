@@ -25,6 +25,15 @@ pip install .
 
 The app is created using the `plotly DASH` ([https://github.com/plotly/dash](https://github.com/plotly/dash)) framework.  
 
+
+### Executing `arcs-dash`
+
+
+```
+arcsdashapp
+```
+
+
 ```
 
 <p align="center">
