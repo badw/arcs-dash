@@ -1,0 +1,2 @@
+[console_scripts]
+arcsdashapp = arcs_dash.app.arcs_app:start

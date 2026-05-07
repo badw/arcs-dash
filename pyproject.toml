@@ -56,6 +56,9 @@ dev = ["pytest>=7.4.0", "pytest-cov>=3.0.0"]
 repository = "https://github.com/badw/arcs-dash.git"
 changelog = "https://github.com/badw/arcs-dash/tree/main/CHANGELOG.md"
 
+[project.scripts]
+arcsdashapp = "arcs_dash.app.arcs_app:start"
+
 [tool.setuptools.package-data]
 template = ["py.typed"]
 arcsdash = ["app/arcs_app.py"]

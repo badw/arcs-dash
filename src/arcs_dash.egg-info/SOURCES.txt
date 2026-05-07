@@ -8,5 +8,7 @@ src/arcs_dash/styling.py
 src/arcs_dash.egg-info/PKG-INFO
 src/arcs_dash.egg-info/SOURCES.txt
 src/arcs_dash.egg-info/dependency_links.txt
+src/arcs_dash.egg-info/entry_points.txt
 src/arcs_dash.egg-info/requires.txt
 src/arcs_dash.egg-info/top_level.txt
+src/arcs_dash/app/arcs_app.py
