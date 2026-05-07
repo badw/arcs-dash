@@ -3,9 +3,10 @@ import time
 from multiprocessing import Process, Condition
 import setproctitle
 import webview
-import warnings 
-from arcs.dash_app.domino import terminate_when_process_dies
-from arcs.dash_app.server import start_dash
+import warnings
+from arcs_dash.domino import terminate_when_process_dies
+from arcs_dash.server import start_dash
+
 
 def start():
     warnings.simplefilter('ignore')
@@ -17,7 +18,8 @@ def start():
     setproctitle.setproctitle('arcs-1.5.0')
 
     # Spawn the dash process.
-    p = Process(target=start_dash, args=(host, port, server_is_started))#, file_location))
+    # , file_location))
+    p = Process(target=start_dash, args=(host, port, server_is_started))
     p.start()
     # If the dash process dies, follow along.
     terminate_when_process_dies(p)
@@ -30,16 +32,17 @@ def start():
 
     # Create the webview.
     webview.create_window(
-            'ARCS 1.5.0', f'http://{host}:{port}',
-            width=1000, 
-            height=1000
-            )
-    
+        'ARCS 1.5.0', f'http://{host}:{port}',
+        width=1000,
+        height=1000
+    )
+
     webview.start()
 
     # Reached when window is closed.
     p.terminate()
     exit(0)
+
 
 if __name__ == '__main__':
     start()

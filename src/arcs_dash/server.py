@@ -1,7 +1,7 @@
 from multiprocessing import Condition
 import importlib.resources
 
-from arcs.dash_app.domino import terminate_when_parent_process_dies
+from arcs_dash.domino import terminate_when_parent_process_dies
 import dash
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import load_figure_template
@@ -20,7 +20,7 @@ from arcs.generate import GraphGenerator
 from dash.exceptions import PreventUpdate
 
 
-from arcs.dash_app.styling import (
+from arcs_dash.styling import (
     # keys_by_depth,
     # _markdown_compound,
     format_concentrations_table_for_dash,
@@ -62,7 +62,7 @@ def start_dash(
         "shortest_path_method": "Djikstra",
     }
     data_dir = importlib.resources.files("arcs").joinpath("data")
-    dft_filename = data_dir.joinpath("dft_data.json")
+    dft_filename = data_dir.joinpath("quantum_data.json.gz")
 
     ###################### layout of DASH template########################
     app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -110,14 +110,16 @@ def start_dash(
     ])
 
     concentrations_input = dbc.Stack(
-        style={"textAlign": "justified", "margin-left": "20px", "margin-right": "20px"},
+        style={"textAlign": "justified",
+               "margin-left": "20px", "margin-right": "20px"},
         gap=3,
         children=[
             dash_table.DataTable(
                 id="concentrations_input",
                 columns=[
                     {"name": "compound", "id": "index", "editable": True},
-                    {"name": "initial conc. (ppm)", "id": "initial", "editable": True},
+                    {"name": "initial conc. (ppm)",
+                     "id": "initial", "editable": True},
                 ],
                 data=[
                     {"index": "H2O", "initial": 30},
@@ -375,7 +377,8 @@ def start_dash(
                     # dbc.Stack(
                     #    [
                     dbc.Card(
-                        [dbc.CardHeader("ARCS Settings"), dbc.CardBody(arcs_settings)],
+                        [dbc.CardHeader("ARCS Settings"),
+                         dbc.CardBody(arcs_settings)],
                         # color='dark',
                     ),
                     #    ],
@@ -429,7 +432,7 @@ def start_dash(
         html.Div(id="final_concs_barchart", children=bar_chart_child),
     )
 
-    ############################### layout
+    # layout
 
     app.layout = html.Div(
         style={"padding": "5rem"},
@@ -483,13 +486,15 @@ def start_dash(
                                                     dbc.CardHeader(
                                                         "Input Concentrations"
                                                     ),
-                                                    dbc.CardBody(concentrations_input),
+                                                    dbc.CardBody(
+                                                        concentrations_input),
                                                 ],
                                                 # color='dark'
                                             ),
                                             dbc.Card(
                                                 children=[
-                                                    dbc.CardHeader("Conditions"),
+                                                    dbc.CardHeader(
+                                                        "Conditions"),
                                                     dbc.CardBody([
                                                         temperature_input,
                                                         pressure_input,
@@ -512,7 +517,8 @@ def start_dash(
                                 children=[
                                     dbc.Card(
                                         children=[
-                                            dbc.CardHeader("Change in Concentrations"),
+                                            dbc.CardHeader(
+                                                "Change in Concentrations"),
                                             dbc.CardBody(
                                                 dbc.Tabs(
                                                     style={"padding": "2rem"},
@@ -543,7 +549,8 @@ def start_dash(
                                 children=[
                                     dbc.Card(
                                         children=[
-                                            dbc.CardHeader("Most Frequent Reactions"),
+                                            dbc.CardHeader(
+                                                "Most Frequent Reactions"),
                                             dbc.CardBody(
                                                 dbc.Tabs(
                                                     style={"padding": "2rem"},
@@ -573,7 +580,7 @@ def start_dash(
     )
 
     ###############################################################################################
-    #################app callbacks
+    # app callbacks
     # off canvas
     @app.callback(
         Output("offcanvas", "is_open"),
@@ -599,7 +606,7 @@ def start_dash(
             raise PreventUpdate
         return rows
 
-    ####update T and P and load a new graph
+    # update T and P and load a new graph
     @app.callback(
         Output("placeholder3", "children"),
         [
@@ -614,7 +621,7 @@ def start_dash(
             "pressure": float(inputs[1]),
         }
 
-    ####update the concentrations
+    # update the concentrations
     @app.callback(
         Output("placeholder1", "children"),
         Input("concentrations_input", "data"),
@@ -672,11 +679,13 @@ def start_dash(
             global ambient_conditions
             nonlocal traversal_settings
 
+            gg = GraphGenerator()
             graph = GraphGenerator().from_file(
                 filename=dft_filename,
                 temperature=ambient_conditions["temperature"],
                 pressure=ambient_conditions["pressure"],
-                max_reaction_length=5,  # for quick testing and debugging - can make this a setting later.
+                # for quick testing and debugging - can make this a setting later.
+                max_reaction_length=4,
             )
 
             default_concentrations = GenerateInitialConcentrations(

@@ -46,7 +46,7 @@ dependencies = [
         'pywebview',
         'setproctitle',
         'pytest',
-        'arcs @ git+https://github.com/badw/arcs.git'
+        'arcs @ git+https://github.com/badw/arcs.git@devel'
 ]
 
 [project.optional-dependencies]
@@ -58,10 +58,10 @@ changelog = "https://github.com/badw/arcs-dash/tree/main/CHANGELOG.md"
 
 [tool.setuptools.package-data]
 template = ["py.typed"]
-arcs = ["data/*.json"]
+arcsdash = ["app/arcs_app.py"]
 
 [tool.pyright]
-include = ["arcs-dash"]
+include = ["arcsdash"]
 exclude = ["**/__pycache__"]
 
 [tool.pytest.ini_options]

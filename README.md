@@ -25,18 +25,11 @@ pip install .
 
 The app is created using the `plotly DASH` ([https://github.com/plotly/dash](https://github.com/plotly/dash)) framework.  
 
-The `arcs-app` can be run from the `app` directory in the terminal through; 
-
 ```
-cd app
-python arcs-app.py
-```
-
 
 <p align="center">
  <img src="./static/ARCS-gui.png" height="300">
 </p>
-
 
 ### Credits
 
@@ -44,4 +37,4 @@ This project was funded by and carried out with collaboration from [Equinor](htt
 
 A forked and modified version of ARCS is available at https://github.com/equinor/arcs 
 
-This version of ARCS is an "under-development" version of ARCS.
+This version of ARCS is an "under-constant-development" version of ARCS.

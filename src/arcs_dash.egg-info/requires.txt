@@ -1,0 +1,25 @@
+ase
+numpy
+chempy
+networkx
+scipy
+pymatgen
+tqdm
+pandas
+pyvis
+tqdm_pathos
+dash
+monty
+dash_bootstrap_templates
+dash_bootstrap_components
+dash-loading-spinners
+dash-core-components
+loguru
+pywebview
+setproctitle
+pytest
+arcs @ git+https://github.com/badw/arcs.git@devel
+
+[dev]
+pytest>=7.4.0
+pytest-cov>=3.0.0
